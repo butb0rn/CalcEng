@@ -9,17 +9,23 @@ public class Main {
 		double[] results = new double[opCodes.length];
 		
 		for(int i = 0; i < opCodes.length; i++) {
-			if (opCodes[i] == 'a') 
+			switch(opCodes[i]) {
+			case 'a': 
 				results[i] = leftvals[i] + rightvals[i];
-			else if(opCodes[i] == 's')
+				break;
+			case 's':
 				results[i] = leftvals[i] - rightvals[i];
-			else if(opCodes[i] == 'd')
+				break;
+			case 'd':
 				results[i] = rightvals[i] != 0.0d ? leftvals[i] / rightvals[i] : 0.0d;
-			else if(opCodes[i] == 'm')
+				break;
+			case 'm':
 				results[i] = leftvals[i] * rightvals[i];
-			else {
+				break;
+			default:
 				System.out.println("Error - invalid opCode");
 				results[i] = 0.0d;
+				break;
 			}
 		}
 		for(double res: results) {
