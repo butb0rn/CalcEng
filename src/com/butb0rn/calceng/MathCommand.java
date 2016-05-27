@@ -1,6 +1,6 @@
 package com.butb0rn.calceng;
 
-public enum MathCommand {
+enum MathCommand {
 	Add,
 	Subtract,
 	Multiply,
