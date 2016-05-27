@@ -2,35 +2,49 @@ package com.butb0rn.myapp;
 
 import com.butb0rn.calceng.Adder;
 import com.butb0rn.calceng.CalculateBase;
-import com.butb0rn.calceng.CalculateHelper;
 import com.butb0rn.calceng.Divider;
-import com.butb0rn.calceng.InvalidStatementException;
+import com.butb0rn.calceng.DynamicHelper;
 import com.butb0rn.calceng.MathEquation;
+import com.butb0rn.calceng.MathProcessing;
 import com.butb0rn.calceng.Multiplier;
+import com.butb0rn.calceng.PowerOf;
 import com.butb0rn.calceng.Subtracter;
 
 public class Main {
 
 	public static void main(String[] args) {	
 		//useMathEquation();
+//		String[] statements = {
+//				"divide 100.0 50.0",
+//				"add 25.0 92.0",
+//				"subtract 225.0 17.0",
+//				"multiply 11.0 3.0"
+//		};
+//		
 		String[] statements = {
-				"divide 100.0 50.0",
 				"add 25.0 92.0",
-				"subtract 225.0 17.0",
-				"multiply 11.0 3.0"
+				"power 5.0 2.0"
 		};
 		
-		CalculateHelper helper = new CalculateHelper();
+		DynamicHelper helper = new DynamicHelper(new MathProcessing[] {
+				new Adder(),
+				new PowerOf()
+		});
+		
 		for(String statement:statements) {
-			try {
-				helper.process(statement);
-				System.out.println(helper);
-			} catch(InvalidStatementException e) {
-				System.out.println(e.getMessage());
-			}
-			
-			
+			String output = helper.process(statement);
+			System.out.println(output);
 		}
+//		
+//		CalculateHelper helper = new CalculateHelper();
+//		for(String statement:statements) {
+//			try {
+//				helper.process(statement);
+//				System.out.println(helper);
+//			} catch(InvalidStatementException e) {
+//				System.out.println(e.getMessage());
+//			}
+
 		
 	}
 	
